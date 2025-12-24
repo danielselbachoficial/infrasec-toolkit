@@ -1,6 +1,6 @@
 # SSH Auditor and Hardening Tool - Enterprise Edition
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/danielselbachoficial/infrasec-toolkit)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/danielselbachoficial/infrasec-toolkit)
 [![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 [![CIS Benchmark](https://img.shields.io/badge/CIS-5.2.x-red.svg)](https://www.cisecurity.org/)
@@ -83,27 +83,27 @@ git clone https://github.com/danielselbachoficial/infrasec-toolkit.git
 cd infrasec-toolkit/ssh_auditor
 
 # Tornar executável
-chmod +x ssh_auditor_v2.py
+chmod +x ssh_auditor.py
 
 # Validar sintaxe
-python3 -m py_compile ssh_auditor_v2.py && echo "✅ OK"
+python3 -m py_compile ssh_auditor.py && echo "✅ OK"
 ```
 
 ### Método 2: Download Direto
 
 ```bash
 # Download do script:
-wget https://raw.githubusercontent.com/seu-usuario/ssh-auditor/main/ssh_auditor_v2.py
+wget https://raw.githubusercontent.com/seu-usuario/ssh-auditor/main/ssh_auditor.py
 
 # Tornar executável:
-chmod +x ssh_auditor_v2.py
+chmod +x ssh_auditor.py
 ```
 
 ### Método 3: Instalação Global
 
 ```bash
 Copiar para /usr/local/bin
-sudo cp ssh_auditor_v2.py /usr/local/bin/ssh-auditor
+sudo cp ssh_auditor.py /usr/local/bin/ssh-auditor
 sudo chmod +x /usr/local/bin/ssh-auditor
 
 # Usar de qualquer lugar
@@ -124,7 +124,7 @@ sudo ssh-auditor
 
 
 `bash
-sudo python3 ssh_auditor_v2.py
+sudo python3 ssh_auditor.py
 `
 
 
@@ -134,7 +134,7 @@ sudo python3 ssh_auditor_v2.py
 ```bash
 ================================================================================
 
-SSH AUDITOR AND HARDENING TOOL - ENTERPRISE EDITION v2.0
+SSH AUDITOR AND HARDENING TOOL - ENTERPRISE EDITION v1.0
 
 Servidor: meu-servidor
 
@@ -179,14 +179,14 @@ Escolha uma opção:
 
 **Auditoria Básica**
 ```bash
-sudo python3 ssh_auditor_v2.py --audit
+sudo python3 ssh_auditor.py --audit
 ```
 
 
 
 **Simulação de Correções (Dry-Run)**
 ```bash
-sudo python3 ssh_auditor_v2.py --fix --dry-run --verbose
+sudo python3 ssh_auditor.py --fix --dry-run --verbose
 ```
 
 
@@ -195,26 +195,26 @@ sudo python3 ssh_auditor_v2.py --fix --dry-run --verbose
 
 ATENÇÃO: Certifique-se de ter acesso alternativo ao servidor!
 ```bash
-sudo python3 ssh_auditor_v2.py --fix --verbose
+sudo python3 ssh_auditor.py --fix --verbose
 ```
 
 **Criar Usuário Sudo**
 
 ```bash
-sudo python3 ssh_auditor_v2.py --create-user admin_backup
+sudo python3 ssh_auditor.py --create-user admin_backup
 ```
 
 
 
 **Instalar Fail2ban**
 ```bash
-sudo python3 ssh_auditor_v2.py --install-fail2ban
+sudo python3 ssh_auditor.py --install-fail2ban
 ```
 
 **Hardening**
 
 ```bash
-sudo python3 ssh_auditor_v2.py --audit --fix --install-fail2ban --verbose
+sudo python3 ssh_auditor.py --audit --fix --install-fail2ban --verbose
 ```
 
 ---
