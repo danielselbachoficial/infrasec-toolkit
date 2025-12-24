@@ -24,14 +24,14 @@ Contribuições são bem-vindas! Por favor, siga estas diretrizes:
    
 6. **Abra um Pull Request**
 
+---
 **Diretrizes de Código**
 - Seguir PEP 8 (Python Style Guide)
 - Adicionar docstrings para funções públicas
 - Incluir testes para novas funcionalidades
 - Atualizar documentação quando necessário
 
-
-
+---
 **Reportar Bugs**
 Abra uma issue incluindo:
 - Descrição detalhada do problema
