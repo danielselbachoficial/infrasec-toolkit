@@ -1,11 +1,13 @@
 # SSH Auditor and Hardening Tool - Enterprise Edition
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/seu-usuario/ssh-auditor)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/danielselbachoficial/infrasec-toolkit)
 [![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 [![CIS Benchmark](https://img.shields.io/badge/CIS-5.2.x-red.svg)](https://www.cisecurity.org/)
 
 Ferramenta profissional de auditoria e hardening de SSH para servidores Linux, com conformidade CIS Benchmark, NIST SP 800-123 e LGPD.
+
+---
 
 ## 📋 Índice
 
@@ -21,7 +23,6 @@ Ferramenta profissional de auditoria e hardening de SSH para servidores Linux, c
 - [Troubleshooting](#troubleshooting)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
-
 
 ---
 
@@ -78,8 +79,8 @@ Todas as dependências são da biblioteca padrão do Python:
 ### Método 1: Clone do Repositório
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/ssh-auditor.git
-cd ssh-auditor
+git clone https://github.com/danielselbachoficial/infrasec-toolkit.git
+cd infrasec-toolkit/ssh_auditor
 
 # Tornar executável
 chmod +x ssh_auditor_v2.py
@@ -172,52 +173,49 @@ MENU PRINCIPAL:
 --------------------------------------------------------------------------------
 
 Escolha uma opção:
-`
+```
 
 **Linha de Comando**
 
 **Auditoria Básica**
-
-`
+```bash
 sudo python3 ssh_auditor_v2.py --audit
-`
+```
 
 
 
 **Simulação de Correções (Dry-Run)**
-
-`
+```bash
 sudo python3 ssh_auditor_v2.py --fix --dry-run --verbose
-`
+```
 
 
 
 **Aplicar Correções**
 
-`bash
 ATENÇÃO: Certifique-se de ter acesso alternativo ao servidor!
-
+```bash
 sudo python3 ssh_auditor_v2.py --fix --verbose
-`
+```
 
 **Criar Usuário Sudo**
 
-`bash
+```bash
 sudo python3 ssh_auditor_v2.py --create-user admin_backup
-`
+```
 
 
 
 **Instalar Fail2ban**
-`bash
+```bash
 sudo python3 ssh_auditor_v2.py --install-fail2ban
-`
+```
 
 **Hardening**
 
-`bash
+```bash
 sudo python3 ssh_auditor_v2.py --audit --fix --install-fail2ban --verbose
-`
+```
 
 ---
 
@@ -351,8 +349,8 @@ Criação de Usuário Sudo:
 - ✅ Art. 47: Boas práticas de governança
 - ✅ Art. 48: Comunicação de incidentes (logging)
 
----
 
+---
 🔍 **Troubleshooting**
 
 Problema: SSH não reinicia após correções
@@ -365,29 +363,28 @@ Sintoma:
 **Solução:**
 
 1. **Verifique o status do SSH:**
-   ```bash
-   sudo systemctl status sshd
    `
+   sudo systemctl status sshd
+   
 
 2. **Verifique logs do sistema:**
 
-   ```bash
-   sudo journalctl -u sshd -n 50
    `
+   sudo journalctl -u sshd -n 50
+   
 
 3. **Teste a configuração manualmente:**
-   ```bash
-   sudo sshd -t -f /etc/ssh/sshd_config
    `
+   sudo sshd -t -f /etc/ssh/sshd_config
+   
 
 4. **Restaure o backup se necessário:**
-   ```bash
+   `
    sudo cp /var/backups/ssh_auditor/sshd_config.bak_TIMESTAMP /etc/ssh/sshd_config
    sudo systemctl restart sshd
-   `
+   
    
 Problema: Bloqueio de acesso SSH
-
 
 
 **Prevenção:**
@@ -397,13 +394,12 @@ Problema: Bloqueio de acesso SSH
 - ✅ Teste a chave SSH em nova sessão antes de fechar a atual
 
 
-
 **Recuperação:**
 
 1. **Acesse via console físico ou IPMI**
 
 2. **Restaure o backup:**
-   ```bash
+   ```
    sudo cp /var/backups/ssh_auditor/sshd_config.bak_TIMESTAMP /etc/ssh/sshd_config
    sudo systemctl restart sshd
    `
@@ -417,11 +413,9 @@ DeprecationWarning: datetime.datetime.utcnow() is deprecated
 
 ---
 
-
-
 📂 **Estrutura de Arquivos**
 
-```bash
+```
 ssh-auditor/
 ├── ssh_auditor_v2.py          # Script principal
 ├── README.md                  # Esta documentação
@@ -438,7 +432,7 @@ ssh-auditor/
 
 **Arquivos Gerados**
 
-```bash
+```
 /var/log/
 ├── ssh_auditor.log                    # Log estruturado JSON
 └── ssh_audit_YYYYMMDD_HHMMSS.txt     # Relatórios de auditoria
