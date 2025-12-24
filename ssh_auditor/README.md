@@ -174,9 +174,9 @@ MENU PRINCIPAL:
 Escolha uma opção:
 `
 
-*Linha de Comando*
+**Linha de Comando**
 
-*Auditoria Básica*
+**Auditoria Básica**
 
 `
 sudo python3 ssh_auditor_v2.py --audit
@@ -184,7 +184,7 @@ sudo python3 ssh_auditor_v2.py --audit
 
 
 
-*Simulação de Correções (Dry-Run)*
+**Simulação de Correções (Dry-Run)**
 
 `
 sudo python3 ssh_auditor_v2.py --fix --dry-run --verbose
@@ -192,7 +192,7 @@ sudo python3 ssh_auditor_v2.py --fix --dry-run --verbose
 
 
 
-*Aplicar Correções*
+**Aplicar Correções**
 
 `bash
 ATENÇÃO: Certifique-se de ter acesso alternativo ao servidor!
@@ -413,8 +413,8 @@ Problema: DeprecationWarning
 **Sintoma:**
 `
 DeprecationWarning: datetime.datetime.utcnow() is deprecated
-
 `
+
 ---
 
 
@@ -432,7 +432,6 @@ ssh-auditor/
     ├── basic_audit.sh
     ├── full_hardening.sh
     └── create_user.sh
-
 `
 
 
@@ -446,7 +445,6 @@ ssh-auditor/
 
 /var/backups/ssh_auditor/
 └── sshd_config.bak_YYYYMMDD_HHMMSS   # Backups do sshd_config
-
 `
 
 ---
@@ -493,4 +491,3 @@ Use por sua conta e risco. O autor não se responsabiliza por perda de acesso ou
 <div align="center">
 Se este projeto foi útil, considere dar uma ⭐!
 </div>
-`
