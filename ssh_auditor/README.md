@@ -363,26 +363,26 @@ Sintoma:
 **Solução:**
 
 1. **Verifique o status do SSH:**
-   `
+   ```bash
    sudo systemctl status sshd
-   
+   ```
 
 2. **Verifique logs do sistema:**
 
-   `
+   ```bash
    sudo journalctl -u sshd -n 50
-   
+   ```
 
 3. **Teste a configuração manualmente:**
-   `
+   ```bash
    sudo sshd -t -f /etc/ssh/sshd_config
-   
+   ```
 
 4. **Restaure o backup se necessário:**
-   `
+   ```bash
    sudo cp /var/backups/ssh_auditor/sshd_config.bak_TIMESTAMP /etc/ssh/sshd_config
    sudo systemctl restart sshd
-   
+   ```
    
 Problema: Bloqueio de acesso SSH
 
@@ -399,23 +399,23 @@ Problema: Bloqueio de acesso SSH
 1. **Acesse via console físico ou IPMI**
 
 2. **Restaure o backup:**
-   ```
+  ```bash
    sudo cp /var/backups/ssh_auditor/sshd_config.bak_TIMESTAMP /etc/ssh/sshd_config
    sudo systemctl restart sshd
-   `
+   ```
 
 Problema: DeprecationWarning
 
 **Sintoma:**
-`
+```bash
 DeprecationWarning: datetime.datetime.utcnow() is deprecated
-`
+```
 
 ---
 
 📂 **Estrutura de Arquivos**
 
-```
+```bash
 ssh-auditor/
 ├── ssh_auditor_v2.py          # Script principal
 ├── README.md                  # Esta documentação
@@ -426,20 +426,20 @@ ssh-auditor/
     ├── basic_audit.sh
     ├── full_hardening.sh
     └── create_user.sh
-`
+```
 
 
 
 **Arquivos Gerados**
 
-```
+```bash
 /var/log/
 ├── ssh_auditor.log                    # Log estruturado JSON
 └── ssh_audit_YYYYMMDD_HHMMSS.txt     # Relatórios de auditoria
 
 /var/backups/ssh_auditor/
 └── sshd_config.bak_YYYYMMDD_HHMMSS   # Backups do sshd_config
-`
+```
 
 ---
 👤 **Autor**
@@ -464,10 +464,10 @@ ssh-auditor/
 
 ---
 📊 **Status do Projeto**
-!GitHub last commit
-!GitHub issues
-!GitHub pull requests
-!GitHub stars
+![GitHub last commit](https://img.shields.io/github/last-commit/seu-usuario/ssh-auditor)
+![GitHub issues](https://img.shields.io/github/issues/seu-usuario/ssh-auditor)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/seu-usuario/ssh-auditor)
+![GitHub stars](https://img.shields.io/github/stars/seu-usuario/ssh-auditor?style=social)
 
 ---
 ⚠️ **AVISO IMPORTANTE:**
