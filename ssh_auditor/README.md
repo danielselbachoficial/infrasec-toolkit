@@ -174,25 +174,25 @@ MENU PRINCIPAL:
 Escolha uma opção:
 `
 
-**Linha de Comando**
+*Linha de Comando*
 
-**Auditoria Básica**
+*Auditoria Básica*
 
-`bash
+`
 sudo python3 ssh_auditor_v2.py --audit
 `
 
 
 
-**Simulação de Correções (Dry-Run)**
+*Simulação de Correções (Dry-Run)*
 
-`bash
+`
 sudo python3 ssh_auditor_v2.py --fix --dry-run --verbose
 `
 
 
 
-**Aplicar Correções**
+*Aplicar Correções*
 
 `bash
 ATENÇÃO: Certifique-se de ter acesso alternativo ao servidor!
