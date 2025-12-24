@@ -463,13 +463,6 @@ ssh-auditor/
 - LGPD - Lei Geral de Proteção de Dados
 
 ---
-📊 **Status do Projeto**
-![GitHub last commit](https://img.shields.io/github/last-commit/seu-usuario/ssh-auditor)
-![GitHub issues](https://img.shields.io/github/issues/seu-usuario/ssh-auditor)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/seu-usuario/ssh-auditor)
-![GitHub stars](https://img.shields.io/github/stars/seu-usuario/ssh-auditor?style=social)
-
----
 ⚠️ **AVISO IMPORTANTE:**
 Este script modifica configurações críticas de segurança do SSH. Sempre:
 
