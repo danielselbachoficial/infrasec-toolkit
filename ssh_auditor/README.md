@@ -15,7 +15,7 @@ Ferramenta profissional de auditoria e hardening de SSH para servidores Linux, c
 - [Requisitos](#-requisitos)
 - [Instalação](#-instalação)
 - [Uso](#-uso)
-  - [Menu Interativo](#Menu Interativo)
+  - [Menu Interativo](#Menu-Interativo)
   - [Linha de Comando](#linha-de-comando)
 - [Funcionalidades](#funcionalidades)
 - [Conformidade](#Conformidade)
