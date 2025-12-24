@@ -21,6 +21,7 @@ Ferramenta profissional de auditoria e hardening de SSH para servidores Linux, c
 - [Conformidade](#-conformidade)
 - [Troubleshooting](./troubleshooting.md)
 - [Exemplos](./exemplos/)
+- [Images](./images/)
 - [Licença](./LICENSE.md)
 - [Contribuição](./contribuicoes.md)
 
