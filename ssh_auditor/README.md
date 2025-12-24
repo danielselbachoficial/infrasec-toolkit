@@ -9,18 +9,19 @@ Ferramenta profissional de auditoria e hardening de SSH para servidores Linux, c
 
 ## 📋 Índice
 
-- [Características](#-características)
-- [Requisitos](#-requisitos)
-- [Instalação](#-instalação)
-- [Uso](#-uso)
+- [Características](#características)
+- [Requisitos](#requisitos)
+- [Instalação](#instalação)
+- [Uso](#uso)
   - [Menu Interativo](#menu-interativo)
   - [Linha de Comando](#linha-de-comando)
-- [Funcionalidades](#-funcionalidades)
-- [Conformidade](#-conformidade)
-- [Exemplos](#exemplos)
-- [Troubleshooting](#-troubleshooting)
-- [Contribuição](#-contribuição)
-- [Licença](#-licença)
+- [Funcionalidades](#funcionalidades)
+- [Conformidade](#conformidade)
+- [Exemplos](./exemplos/)
+- [Troubleshooting](#troubleshooting)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
+
 
 ---
 
