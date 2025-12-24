@@ -94,7 +94,7 @@ python3 -m py_compile ssh_auditor.py && echo "✅ OK"
 
 ```bash
 # Download do script:
-wget https://raw.githubusercontent.com/danielselbachoficial/infrasec-toolkit/main/ssh_auditor/ssh_auditor_v2.py
+https://raw.githubusercontent.com/danielselbachoficial/infrasec-toolkit/main/ssh_auditor/ssh_auditor.py
 
 # Tornar executável:
 chmod +x ssh_auditor.py
