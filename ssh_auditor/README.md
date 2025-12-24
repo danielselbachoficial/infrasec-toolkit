@@ -365,23 +365,23 @@ Sintoma:
 **Solução:**
 
 1. **Verifique o status do SSH:**
-   `bash
+   ```bash
    sudo systemctl status sshd
    `
 
 2. **Verifique logs do sistema:**
 
-   `bash
+   ```bash
    sudo journalctl -u sshd -n 50
    `
 
 3. **Teste a configuração manualmente:**
-   `bash
+   ```bash
    sudo sshd -t -f /etc/ssh/sshd_config
    `
 
 4. **Restaure o backup se necessário:**
-   `bash
+   ```bash
    sudo cp /var/backups/ssh_auditor/sshd_config.bak_TIMESTAMP /etc/ssh/sshd_config
    sudo systemctl restart sshd
    `
@@ -403,7 +403,7 @@ Problema: Bloqueio de acesso SSH
 1. **Acesse via console físico ou IPMI**
 
 2. **Restaure o backup:**
-   `bash
+   ```bash
    sudo cp /var/backups/ssh_auditor/sshd_config.bak_TIMESTAMP /etc/ssh/sshd_config
    sudo systemctl restart sshd
    `
@@ -421,7 +421,7 @@ DeprecationWarning: datetime.datetime.utcnow() is deprecated
 
 📂 **Estrutura de Arquivos**
 
-`
+```bash
 ssh-auditor/
 ├── ssh_auditor_v2.py          # Script principal
 ├── README.md                  # Esta documentação
@@ -437,105 +437,15 @@ ssh-auditor/
 
 
 
-****Arquivos Gerados****
+**Arquivos Gerados**
 
-`
+```bash
 /var/log/
 ├── ssh_auditor.log                    # Log estruturado JSON
 └── ssh_audit_YYYYMMDD_HHMMSS.txt     # Relatórios de auditoria
 
 /var/backups/ssh_auditor/
 └── sshd_config.bak_YYYYMMDD_HHMMSS   # Backups do sshd_config
-
-`
-
----
-
-
-
-🤝 **Contribuição**
-Contribuições são bem-vindas! Por favor, siga estas diretrizes:
-
-****Como Contribuir:****
-
-1. **Fork o repositório**
-
-2. **Crie uma branch para sua feature:**
-
-   `bash
-   git checkout -b feature/nova-funcionalidade
-   `
-
-3. **Commit suas mudanças:**
-
-   `bash
-   git commit -m "Adiciona nova funcionalidade X"
-   `
-
-4. **Push para a branch:**
-   `bash
-   git push origin feature/nova-funcionalidade
-   `
-   
-6. **Abra um Pull Request**
-
-**Diretrizes de Código**
-- Seguir PEP 8 (Python Style Guide)
-- Adicionar docstrings para funções públicas
-- Incluir testes para novas funcionalidades
-- Atualizar documentação quando necessário
-
-
-
-**Reportar Bugs**
-Abra uma issue incluindo:
-- Descrição detalhada do problema
-- Passos para reproduzir
-- Versão do Python e distribuição Linux
-- Logs relevantes
-
----
-
-📄 **Licença**
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
-`
-
-**MIT License**
-
-Copyright (c) 2025 Daniel Selbach Figueiró
-
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-
-of this software and associated documentation files (the "Software"), to deal
-
-in the Software without restriction, including without limitation the rights
-
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-
-copies of the Software, and to permit persons to whom the Software is
-
-furnished to do so, subject to the following conditions:
-
-
-The above copyright notice and this permission notice shall be included in all
-
-copies or substantial portions of the Software.
-
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-
-SOFTWARE.
 
 `
 
