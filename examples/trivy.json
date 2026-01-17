@@ -1,0 +1,17 @@
+{
+  "Results": [
+    {
+      "Target": "debian:12",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2023-1234",
+          "PkgName": "openssl",
+          "InstalledVersion": "1.1.1",
+          "Severity": "HIGH",
+          "Title": "Sample OpenSSL vulnerability",
+          "PrimaryURL": "https://example.com/CVE-2023-1234"
+        }
+      ]
+    }
+  ]
+}

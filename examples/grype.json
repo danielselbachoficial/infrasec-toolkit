@@ -1,0 +1,13 @@
+{
+  "matches": [
+    {
+      "artifact": {"name": "nginx", "version": "1.24.0"},
+      "vulnerability": {
+        "id": "CVE-2022-9999",
+        "severity": "Medium",
+        "description": "Sample nginx vulnerability",
+        "dataSource": "https://example.com/CVE-2022-9999"
+      }
+    }
+  ]
+}

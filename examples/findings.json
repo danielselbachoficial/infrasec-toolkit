@@ -1,0 +1,33 @@
+{
+  "generated_at": "2025-01-01T00:00:00Z",
+  "system": {
+    "hostname": "example-host",
+    "os_name": "Ubuntu",
+    "os_version": "22.04",
+    "kernel": "5.15"
+  },
+  "findings": [
+    {
+      "cve": "CVE-2023-1234",
+      "component": "openssl",
+      "version": "1.1.1",
+      "severity": "high",
+      "summary": "Exemplo de vulnerabilidade OpenSSL.",
+      "references": ["https://example.com/CVE-2023-1234"],
+      "evidence": ["trivy:debian:12"],
+      "recommendations": [
+        {
+          "title": "Atualizar componente",
+          "details": "Aplicar patches oficiais e validar em homologação."
+        }
+      ]
+    }
+  ],
+  "counts": {"critical": 0, "high": 1, "medium": 0, "low": 0},
+  "risk_score": 7,
+  "notes": [
+    "A coleta é baseada em evidências fornecidas e inventário local.",
+    "Nenhuma exploração ou varredura ativa foi executada.",
+    "Recomenda-se validar com janelas de manutenção e backups antes de aplicar correções."
+  ]
+}
