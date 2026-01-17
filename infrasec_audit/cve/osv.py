@@ -31,12 +31,16 @@ class OsvClient:
             time.sleep(interval - elapsed)
         self._last_call = time.time()
 
-    def cached_lookup(self, package_name: str, version: str | None, ecosystem: str | None) -> dict[str, Any]:
+    def cached_lookup(
+        self, package_name: str, version: str | None, ecosystem: str | None
+    ) -> dict[str, Any]:
         key = f"{ecosystem}:{package_name}:{version or 'unknown'}"
         cached = self.cache.get(key)
         return cached or {}
 
-    def query(self, package_name: str, version: str | None, ecosystem: str | None) -> dict[str, Any]:
+    def query(
+        self, package_name: str, version: str | None, ecosystem: str | None
+    ) -> dict[str, Any]:
         key = f"{ecosystem}:{package_name}:{version or 'unknown'}"
         cached = self.cache.get(key)
         if cached:

@@ -7,7 +7,12 @@ from infrasec_audit.reporting.html_report import render_html
 from infrasec_audit.utils.redact import redact_mapping
 
 
-def write_pdf(report: FindingsReport, output_path: Path, redact: bool, client_name: str | None) -> None:
+def write_pdf(
+    report: FindingsReport,
+    output_path: Path,
+    redact: bool,
+    client_name: str | None,
+) -> None:
     html = render_html(report, redact=redact, client_name=client_name)
     try:
         from weasyprint import HTML
@@ -40,7 +45,12 @@ def write_pdf(report: FindingsReport, output_path: Path, redact: bool, client_na
     story.append(Spacer(1, 12))
     story.append(Paragraph("Achados:", styles["Heading2"]))
     for finding in data.get("findings", []):
-        story.append(Paragraph(f"{finding.get('cve')} - {finding.get('component')}", styles["Heading3"]))
+        story.append(
+            Paragraph(
+                f"{finding.get('cve')} - {finding.get('component')}",
+                styles["Heading3"],
+            )
+        )
         story.append(Paragraph(f"Severidade: {finding.get('severity')}", styles["Normal"]))
         story.append(Paragraph(f"Resumo: {finding.get('summary')}", styles["Normal"]))
         story.append(Spacer(1, 8))

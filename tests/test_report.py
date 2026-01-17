@@ -16,7 +16,12 @@ def _sample_report() -> FindingsReport:
         references=["https://example.com"],
         recommendations=[Recommendation(title="Atualizar", details="Aplicar patch")],
     )
-    return FindingsReport(system=system, findings=[finding], counts={"high": 1, "critical": 0, "medium": 0, "low": 0}, risk_score=7)
+    return FindingsReport(
+        system=system,
+        findings=[finding],
+        counts={"high": 1, "critical": 0, "medium": 0, "low": 0},
+        risk_score=7,
+    )
 
 
 def test_report_generation(tmp_path: Path):

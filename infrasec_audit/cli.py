@@ -3,13 +3,16 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
-from typing import Optional
 
 import typer
 from rich.console import Console
 from rich.table import Table
 
-from infrasec_audit.collectors.local import artifacts_to_json, collect_local_artifacts, load_artifacts
+from infrasec_audit.collectors.local import (
+    artifacts_to_json,
+    collect_local_artifacts,
+    load_artifacts,
+)
 from infrasec_audit.cve.osv import OsvClient, default_cache
 from infrasec_audit.models import Evidence, EvidenceItem, Finding, FindingsReport, Recommendation
 from infrasec_audit.parsers import parse_grype, parse_nmap_xml, parse_osv, parse_trivy
@@ -21,6 +24,37 @@ app = typer.Typer(add_completion=False)
 console = Console()
 logger = logging.getLogger("infrasec-audit")
 
+COLLECT_MODE = typer.Option("local", help="Modo de coleta (apenas local no MVP).")
+COLLECT_OUT = typer.Option(Path("artifacts.json"), help="Arquivo de saída JSON.")
+COLLECT_AUTH = typer.Option(
+    False,
+    "--i-have-authorization",
+    help="Confirma autorização explícita para coleta além de leitura local.",
+)
+COLLECT_VERBOSE = typer.Option(False, help="Logs detalhados.")
+
+INGEST_INPUT = typer.Option(..., help="Arquivo de evidências (JSON/XML).")
+INGEST_TYPE = typer.Option(
+    ...,
+    help="Tipo do scanner: trivy|grype|osv|nmap-xml|generic-json",
+)
+INGEST_OUT = typer.Option(Path("evidence.json"), help="Arquivo de saída JSON.")
+INGEST_VERBOSE = typer.Option(False, help="Logs detalhados.")
+
+ANALYZE_ARTIFACTS = typer.Option(..., help="Arquivo artifacts.json.")
+ANALYZE_EVIDENCE = typer.Option(None, help="Arquivo evidence.json.")
+ANALYZE_OUT = typer.Option(Path("findings.json"), help="Arquivo de saída JSON.")
+ANALYZE_CACHE_TTL = typer.Option(86400, help="TTL do cache em segundos.")
+ANALYZE_OFFLINE = typer.Option(False, help="Não realizar consultas externas.")
+ANALYZE_VERBOSE = typer.Option(False, help="Logs detalhados.")
+
+REPORT_FINDINGS = typer.Option(..., help="Arquivo findings.json.")
+REPORT_FORMAT = typer.Option("html,pdf", help="Formatos: html,pdf")
+REPORT_OUT_DIR = typer.Option(Path("report"), help="Diretório de saída.")
+REPORT_REDACT = typer.Option(False, help="Mascarar IPs/hostnames.")
+REPORT_CLIENT = typer.Option(None, help="Nome do cliente/ambiente.")
+REPORT_VERBOSE = typer.Option(False, help="Logs detalhados.")
+
 
 def _setup_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
@@ -29,14 +63,10 @@ def _setup_logging(verbose: bool) -> None:
 
 @app.command()
 def collect(
-    mode: str = typer.Option("local", help="Modo de coleta (apenas local no MVP)."),
-    out: Path = typer.Option(Path("artifacts.json"), help="Arquivo de saída JSON."),
-    i_have_authorization: bool = typer.Option(
-        False,
-        "--i-have-authorization",
-        help="Confirma autorização explícita para coleta além de leitura local.",
-    ),
-    verbose: bool = typer.Option(False, help="Logs detalhados."),
+    mode: str = COLLECT_MODE,
+    out: Path = COLLECT_OUT,
+    i_have_authorization: bool = COLLECT_AUTH,
+    verbose: bool = COLLECT_VERBOSE,
 ) -> None:
     """Coleta inventário local do host."""
     _setup_logging(verbose)
@@ -52,12 +82,10 @@ def collect(
 
 @app.command()
 def ingest(
-    input: Path = typer.Option(..., help="Arquivo de evidências (JSON/XML)."),
-    type: str = typer.Option(
-        ..., help="Tipo do scanner: trivy|grype|osv|nmap-xml|generic-json"
-    ),
-    out: Path = typer.Option(Path("evidence.json"), help="Arquivo de saída JSON."),
-    verbose: bool = typer.Option(False, help="Logs detalhados."),
+    input: Path = INGEST_INPUT,
+    type: str = INGEST_TYPE,
+    out: Path = INGEST_OUT,
+    verbose: bool = INGEST_VERBOSE,
 ) -> None:
     """Normaliza evidências de scanners externos."""
     _setup_logging(verbose)
@@ -86,12 +114,12 @@ def ingest(
 
 @app.command()
 def analyze(
-    artifacts: Path = typer.Option(..., help="Arquivo artifacts.json."),
-    evidence: Optional[Path] = typer.Option(None, help="Arquivo evidence.json."),
-    out: Path = typer.Option(Path("findings.json"), help="Arquivo de saída JSON."),
-    cache_ttl: int = typer.Option(86400, help="TTL do cache em segundos."),
-    offline: bool = typer.Option(False, help="Não realizar consultas externas."),
-    verbose: bool = typer.Option(False, help="Logs detalhados."),
+    artifacts: Path = ANALYZE_ARTIFACTS,
+    evidence: Path | None = ANALYZE_EVIDENCE,
+    out: Path = ANALYZE_OUT,
+    cache_ttl: int = ANALYZE_CACHE_TTL,
+    offline: bool = ANALYZE_OFFLINE,
+    verbose: bool = ANALYZE_VERBOSE,
 ) -> None:
     """Correlaciona inventário com CVEs e gera achados."""
     _setup_logging(verbose)
@@ -131,7 +159,11 @@ def analyze(
                     version=version,
                     severity=severity,
                     summary=summary,
-                    references=[ref.get("url") for ref in vuln.get("references", []) if ref.get("url")],
+                    references=[
+                        ref.get("url")
+                        for ref in vuln.get("references", [])
+                        if ref.get("url")
+                    ],
                     evidence=["osv"],
                     recommendations=_recommendations(severity),
                 )
@@ -178,12 +210,12 @@ def analyze(
 
 @app.command()
 def report(
-    findings: Path = typer.Option(..., help="Arquivo findings.json."),
-    format: str = typer.Option("html,pdf", help="Formatos: html,pdf"),
-    out_dir: Path = typer.Option(Path("report"), help="Diretório de saída."),
-    redact: bool = typer.Option(False, help="Mascarar IPs/hostnames."),
-    client_name: Optional[str] = typer.Option(None, help="Nome do cliente/ambiente."),
-    verbose: bool = typer.Option(False, help="Logs detalhados."),
+    findings: Path = REPORT_FINDINGS,
+    format: str = REPORT_FORMAT,
+    out_dir: Path = REPORT_OUT_DIR,
+    redact: bool = REPORT_REDACT,
+    client_name: str | None = REPORT_CLIENT,
+    verbose: bool = REPORT_VERBOSE,
 ) -> None:
     """Gera relatórios HTML/PDF."""
     _setup_logging(verbose)
@@ -223,7 +255,8 @@ def _risk_score(counts: dict[str, int]) -> int:
 def _recommendations(severity: str | None) -> list[Recommendation]:
     base = [
         Recommendation(
-            title="Atualizar componente", details="Aplicar patches oficiais e validar em homologação."
+            title="Atualizar componente",
+            details="Aplicar patches oficiais e validar em homologação.",
         ),
         Recommendation(
             title="Monitoramento contínuo",
