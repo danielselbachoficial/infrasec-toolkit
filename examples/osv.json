@@ -1,0 +1,15 @@
+{
+  "results": [
+    {
+      "vulnerabilities": [
+        {
+          "id": "CVE-2021-0001",
+          "summary": "Sample vulnerability",
+          "package": {"name": "requests"},
+          "severity": [{"type": "LOW"}],
+          "references": [{"url": "https://example.com/CVE-2021-0001"}]
+        }
+      ]
+    }
+  ]
+}
