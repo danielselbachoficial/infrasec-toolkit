@@ -45,7 +45,7 @@ Desenvolver um script simples para:
 ### 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/watchmanlogs.git
+git clone https://github.com/danielselbachoficial/watchmanlogs.git
 cd watchmanlogs
 ```
 
