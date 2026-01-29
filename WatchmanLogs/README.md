@@ -137,6 +137,4 @@ Localiza tentativas direcionadas a arquivos definidos.
 watchmanlogs/
 ├── watchmanlogs.sh
 ├── README.md
-└── examples/
-    └── sample-access.log
 ```
