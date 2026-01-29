@@ -28,11 +28,6 @@ Desenvolver um script simples para:
 - Apoiar investigações iniciais
 - Fortalecer a postura defensiva
 
-Sempre com foco em:
-
-> “Quem é fiel no pouco, também é fiel no muito.”  
-> — Lucas 16:10
-
 ---
 
 ## 🛠️ Requisitos
